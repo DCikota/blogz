@@ -29,10 +29,10 @@ def blog():
     blog_id = request.args.get("id")
     if blog_id:
         blog = Blog.query.get(blog_id)
-        return render_template('ind_post.html', blog=blog)
+        return render_template('indpost.html', blog=blog)
     else:
         blog_posts = Blog.query.all()
-        return render_template('blog.html', posts="blog_posts")
+        return render_template('blog.html', posts=blog_posts)
 
 
 @app.route('/newpost', methods=['POST', 'GET'])
