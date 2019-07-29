@@ -4,16 +4,26 @@
 <h1><center>Add a Blog</center></h1>
     <form action="/newpost" method='POST'>
         
+        <p class="flash">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            <ul>
+                {% for category,message in messages %}
+                    <li class="{{category}}">{{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endwith %}
+        </p>
+
         <section>
             <p><label>Title for your new blog:</label></p>
             <input name="blog_title" type="text" value="{{blog_title}}">
         </section>
-        <p class="error">{{title_error}}</p>
+        
         <section>
             <p><label>Your new blog:</label></p>
             <textarea name="blog_body" type="textarea" rows='10' cols='60'>{{blog_body}}</textarea>
         </section>
-        <p class="error">{{body_error}}</p>
+        
         <input type="submit" value="Add Entry">
     </form>
 
